@@ -2,9 +2,12 @@ import { NavLink } from "react-router";
 
 import Icon from "./Icon";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
     return (
-        <aside id="sidebar">
+        <aside 
+            id="sidebar" 
+            className={isOpen ? "open" : ""}
+        >
 
             <div className="sidebar-header row-space-between">
 
@@ -22,6 +25,7 @@ export default function Sidebar() {
                     aria-label="Close menu"
                     aria-controls="sidebar"
                     aria-expanded="true"
+                    onClick={onClose}
                 >
                     <Icon name="icon-close" className="icon-xl" />
                 </button>

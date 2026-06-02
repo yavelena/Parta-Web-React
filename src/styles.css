@@ -297,6 +297,10 @@ a{
 .wrap{
     flex-wrap: wrap;
 }
+.nobr
+{
+    white-space: nowrap;
+}
 
 
 .gap-1 {

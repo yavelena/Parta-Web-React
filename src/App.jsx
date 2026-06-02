@@ -1,17 +1,17 @@
 import { Routes, Route } from "react-router";
 
 import Layout from "./components/Layout";
-import Dashboard from "./pages/Dashboard";
-import InventorySearch from "./pages/InventorySearch";
-import DigiKeySearch from "./pages/DigiKeySearch";
+import DashboardPage from "./pages/DashboardPage";
+import InventorySearchPage from "./pages/InventorySearchPage";
+import DigiKeySearchPage from "./pages/DigiKeySearchPage";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />} >
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/inventory" element={<InventorySearch />} />
-        <Route path="/digikey-search" element={<DigiKeySearch />} />
+        <Route path="/" element={<DashboardPage/>} />
+        <Route path="/inventory" element={<InventorySearchPage />} />
+        <Route path="/digikey-search" element={<DigiKeySearchPage />} />
       </Route>
     </Routes>
   );

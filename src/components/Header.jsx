@@ -1,10 +1,15 @@
 import Icon from "./Icon";
 
-export default function Header() {
+export default function Header({ onMenuOpen }) {
     return (
         <header className="row-space-between white-bg">
             <div id="header-left">
-                <button id="menu-toggle" className="menu-toggle" aria-label="Open menu">
+                <button 
+                    id="menu-toggle" 
+                    className="menu-toggle" 
+                    aria-label="Open menu" 
+                    onClick={onMenuOpen} 
+                >
                     <Icon name="icon-menu" className="icon-xl" />
                 </button>
                 <form id="global-search-form" role="search" aria-label="Inventory search">
