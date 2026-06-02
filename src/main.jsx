@@ -6,7 +6,7 @@ import './styles.css'
 
 ReactDom.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Parta-Web-React">
       <App />
     </BrowserRouter>
   </React.StrictMode>
