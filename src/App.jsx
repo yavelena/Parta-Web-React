@@ -8,10 +8,10 @@ import DigiKeySearchPage from "./pages/DigiKeySearchPage";
 export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />} >
-        <Route path="/" element={<DashboardPage/>} />
-        <Route path="/inventory" element={<InventorySearchPage />} />
-        <Route path="/digikey-search" element={<DigiKeySearchPage />} />
+      <Route path="/" element={<Layout />} >
+        <Route index element={<DashboardPage/>} />
+        <Route path="inventory" element={<InventorySearchPage />} />
+        <Route path="digikey-search" element={<DigiKeySearchPage />} />
       </Route>
     </Routes>
   );
