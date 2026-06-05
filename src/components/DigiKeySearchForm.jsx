@@ -44,7 +44,8 @@ function DigiKeyClearButton() {
 
 export default function DigiKeySearchForm({
     formAction,
-    queryError
+    queryError,
+    queryInputRef
 }) {
 
     const hasQueryError = Boolean(queryError);
@@ -76,6 +77,7 @@ export default function DigiKeySearchForm({
                     <div className="search-container rounded row-vertical-center gap-3">
                         <Icon name="icon-search" className="icon-xl" />
                         <input
+                            ref={queryInputRef}
                             name="query"
                             id="component-query-input"
                             type="text"
