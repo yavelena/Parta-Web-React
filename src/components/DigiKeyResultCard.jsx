@@ -1,6 +1,5 @@
 import Icon from "./Icon";
 import DigiKeyExternalLink from "./DigiKeyExternalLink";
-// import { formatQuantity } from "../utils/dataFormatters";
 import {
     isBestMatch,
     formatQuantity,

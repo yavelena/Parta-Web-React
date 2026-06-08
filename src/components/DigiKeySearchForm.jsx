@@ -64,7 +64,7 @@ export default function DigiKeySearchForm({
             >
                 <div
                     id="search-query-input-field"
-                    className="form-field"
+                    className={hasQueryError ? "form-field is-invalid" : "form-field"}
                 >
 
                     <label
@@ -82,8 +82,6 @@ export default function DigiKeySearchForm({
                             id="component-query-input"
                             type="text"
                             placeholder="e.g. STM32F407VGT6, 10k 0402, Murata 0.1uF"
-                            required
-                            minLength={2}
                             autoComplete="off"
                             aria-describedby={hasQueryError ? "component-query-error" : undefined}
                             aria-invalid={hasQueryError}

@@ -23,8 +23,30 @@ export default function DigiKeySearchPage() {
 
     const queryInputRef = useRef(null);
 
+    const hasQueryError = Boolean(searchFormState.queryError);
+    const hasSubmitError = Boolean(searchFormState.submitError);
+    const hasResults = searchFormState.results.length > 0;
+
+    const showSubmitError = hasSubmitError && !isSearchPending;
+
+    const showResults =
+        searchFormState.hasSearched &&
+        !isSearchPending &&
+        !hasQueryError &&
+        !hasSubmitError &&
+        hasResults;
+
+    const showNoResults =
+        searchFormState.hasSearched &&
+        !isSearchPending &&
+        !hasQueryError &&
+        !hasSubmitError &&
+        !hasResults;
+
     function handleExampleQueryClick(query) {
-        if (!queryInputRef.current) return;
+        if (!queryInputRef.current) {
+            return;
+        }
 
         queryInputRef.current.value = query;
         queryInputRef.current.focus();
@@ -39,41 +61,29 @@ export default function DigiKeySearchPage() {
 
             <div className="layout-with-sidebar">
                 <div className="flex-col gap-3">
-                    {/*------------------ SERCH FORM -------------------*/}
+
                     <DigiKeySearchForm
                         formAction={searchFormAction}
                         queryError={searchFormState.queryError}
                         queryInputRef={queryInputRef}
                     />
 
-                    {/*----------- SERCH LOADING SPINNER -------------------*/}
-
                     {isSearchPending && <DigiKeyLoadingBlock />}
 
-                    {/*----------- SERCH LOADING ERROR -------------------*/}
-                    {searchFormState.submitError && !isSearchPending && (
+                    {showSubmitError && (
                         <DigiKeyErrorBlock message={searchFormState.submitError} />
                     )}
 
-                    {/*----------- SERCH RESULTS HEADER -------------------*/}
-                    {searchFormState.hasSearched &&
-                        !isSearchPending &&
-                        !searchFormState.queryError &&
-                        !searchFormState.submitError &&
-                        searchFormState.results.length > 0 && (
-                            <DigiKeyResultsBlock
-                                query={searchFormState.lastQuery}
-                                results={searchFormState.results}
-                            />
-                        )}
+                    {showResults && (
+                        <DigiKeyResultsBlock
+                            query={searchFormState.lastQuery}
+                            results={searchFormState.results}
+                        />
+                    )}
 
-                    {searchFormState.hasSearched &&
-                        !isSearchPending &&
-                        !searchFormState.queryError &&
-                        !searchFormState.submitError &&
-                        searchFormState.results.length === 0 && (
-                            <DigiKeyNoResultsBlock query={searchFormState.lastQuery} />
-                        )}
+                    {showNoResults && (
+                        <DigiKeyNoResultsBlock query={searchFormState.lastQuery} />
+                    )}
                 </div>
                 <DigiKeySearchSidebar onExampleQueryClick={handleExampleQueryClick} />
             </div>

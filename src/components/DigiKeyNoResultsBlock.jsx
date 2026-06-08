@@ -6,6 +6,7 @@ export default function DigiKeyNoResultsBlock({ query })
         <div
             className="info-panel panel-body flex-row gap-4"
             role="status"
+            aria-live="polite"
         >
             <Icon name="icon-info" className="icon-lg color-blue" />
 

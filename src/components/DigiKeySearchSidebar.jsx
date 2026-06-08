@@ -1,3 +1,5 @@
+import Panel from "./Panel";
+
 const searchTips = [
     {
         id: "part-numbers",
@@ -26,8 +28,7 @@ const exampleQueries = [
     "USB-C connector"
 ];
 
-function DigiKeySearchTipsPanel()
-{
+function DigiKeySearchTipsPanel() {
     return (
         <section className="panel text-sm">
             <div className="panel-header">
@@ -54,32 +55,28 @@ function DigiKeySearchTipsPanel()
 }
 
 
-function DigiKeyExampleQueriesPanel({ onExampleQueryClick })
-{
+function DigiKeyExampleQueriesPanel({ onExampleQueryClick }) {
     return (
-        <section className="panel">
-            <div className="panel-header">
-                <h2>Example Queries</h2>
-            </div>
+        <Panel
+            title="Example Queries"
+            bodyClassName="flex-col gap-3">
+            {exampleQueries.map(query => (
+                <button
+                    key={query}
+                    type="button"
+                    className="btn-chip"
+                    onClick={() => onExampleQueryClick(query)}
+                >
+                    {query}
+                </button>
+            ))}
+        </Panel>
 
-            <div className="panel-body flex-col gap-3">
-                {exampleQueries.map(query => (
-                    <button
-                        key={query}
-                        type="button"
-                        className="btn-chip"
-                        onClick={() => onExampleQueryClick(query)}
-                    >
-                        {query}
-                    </button>
-                ))}
-            </div>
-        </section>
+
     );
 }
 
-export default function DigiKeySearchSidebar({ onExampleQueryClick })
-{
+export default function DigiKeySearchSidebar({ onExampleQueryClick }) {
     return (
         <aside className="flex-col gap-3">
             <DigiKeySearchTipsPanel />
